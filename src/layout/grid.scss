@@ -1,16 +1,28 @@
 // GRID
 
 // Columns
+
+// stylelint-disable-next-line  declaration-property-value-no-unknown
 .col-1 { width: (1 * 0.0833333333 * 100%); }
+// stylelint-disable-next-line  declaration-property-value-no-unknown
 .col-2 { width: (2 * 0.0833333333 * 100%); }
+// stylelint-disable-next-line  declaration-property-value-no-unknown
 .col-3 { width: (3 * 0.0833333333 * 100%); }
+// stylelint-disable-next-line  declaration-property-value-no-unknown
 .col-4 { width: (4 * 0.0833333333 * 100%); }
+// stylelint-disable-next-line  declaration-property-value-no-unknown
 .col-5 { width: (5 * 0.0833333333 * 100%); }
+// stylelint-disable-next-line  declaration-property-value-no-unknown
 .col-6 { width: (6 * 0.0833333333 * 100%); }
+// stylelint-disable-next-line  declaration-property-value-no-unknown
 .col-7 { width: (7 * 0.0833333333 * 100%); }
+// stylelint-disable-next-line  declaration-property-value-no-unknown
 .col-8 { width: (8 * 0.0833333333 * 100%); }
+// stylelint-disable-next-line  declaration-property-value-no-unknown
 .col-9 { width: (9 * 0.0833333333 * 100%); }
+// stylelint-disable-next-line  declaration-property-value-no-unknown
 .col-10 { width: (10 * 0.0833333333 * 100%); }
+// stylelint-disable-next-line  declaration-property-value-no-unknown
 .col-11 { width: (11 * 0.0833333333 * 100%); }
 .col-12 { width: 100%; }
 
@@ -34,9 +46,9 @@
 // Gutters
 // Apply padding and a negative margin to the outside of the container
 // stylelint-disable primer/spacing
-@mixin gutters ($gutter-width: $spacer-3) {
-  margin-right: -$gutter-width;
-  margin-left: -$gutter-width;
+@mixin gutters ($gutter-width: var(--base-size-16)) {
+  margin-right: calc($gutter-width * -1);
+  margin-left: calc($gutter-width * -1);
 
   > [class*='col-'] {
     padding-right: $gutter-width !important;
@@ -45,21 +57,21 @@
 }
 
 .gutter {
-  @include gutters($spacer-3);
+  @include gutters(var(--base-size-16));
 }
 
 .gutter-condensed {
-  @include gutters($spacer-2);
+  @include gutters(var(--base-size-8));
 }
 
 .gutter-spacious {
-  @include gutters($spacer-4);
+  @include gutters(var(--base-size-24));
 }
 
 @each $breakpoint in map-keys($breakpoints) {
   @include breakpoint($breakpoint) {
-    .gutter-#{$breakpoint} { @include gutters($spacer-3); }
-    .gutter-#{$breakpoint}-condensed { @include gutters($spacer-2); }
-    .gutter-#{$breakpoint}-spacious { @include gutters($spacer-4); }
+    .gutter-#{$breakpoint} { @include gutters(var(--base-size-16)); }
+    .gutter-#{$breakpoint}-condensed { @include gutters(var(--base-size-8)); }
+    .gutter-#{$breakpoint}-spacious { @include gutters(var(--base-size-24)); }
   }
 }
